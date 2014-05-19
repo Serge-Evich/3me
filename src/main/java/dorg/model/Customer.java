@@ -4,7 +4,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = 'CUSTOMER')
+@Table(name = "CUSTOMER")
 //@NamedQuery(name = 'User.findUserByEmail', query = 'select u from User u where u.email = :email')
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -17,10 +17,11 @@ public class Customer implements Serializable {
 	private User user;
 	private String name;
 	private String surname;
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="CUSTOMER")
-	private List<Contact> contacts;
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="CUSTOMER")
-	private List<Address> addresses;
+	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="CUSTOMER")
+	@MapsId
+	private Contact contacts;
+	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="CUSTOMER")
+	private Address addresses;
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="CUSTOMER")
 	private List<Orders> orders;
 	public void setId(int id) {
@@ -48,11 +49,11 @@ public class Customer implements Serializable {
 		user=u;
 	}
 	
-	public List<Contact> getContacts(){return contacts;}
-	public List<Address> getAdresses(){return addresses;}
+	public Contact getContacts(){return contacts;}
+	public Address getAdresses(){return addresses;}
 	public List<Orders> getOrders(){return orders;}
-	public void setContacts(List<Contact> c){contacts=c;}
-	public void setAddresses(List<Address> a){addresses=a;}
+	public void setContacts(Contact c){contacts=c;}
+	public void setAddresses(Address a){addresses=a;}
 	
 	@Override
 	public int hashCode() {

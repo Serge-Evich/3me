@@ -4,8 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = 'CONTACT')
-@NamedQuery(name = 'User.findUserByEmail', query = 'select u from User u where u.email = :email')
+@Table(name = "CONTACT")
+@NamedQuery(name = "User.findUserByEmail", query = "select u from User u where u.email = :email")
 
 public class Contact implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -13,8 +13,8 @@ public class Contact implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
-    @JoinColumn(name="CUST_ID", nullable=false)
+	@OneToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
+    @MapsId
 	private Customer customer;
 	private String mobphone1;
 	private String mobphone2;

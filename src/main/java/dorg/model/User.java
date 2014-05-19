@@ -3,12 +3,12 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = 'USER')
-@NamedQuery(name = 'User.findUserByEmail', query = 'select u from User u where u.email = :email')
+@Table(name = "USER")
+@NamedQuery(name = "User.findUserByEmail", query = "select u from User u where u.email = :email")
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public static final String FIND_BY_EMAIL = 'User.findUserByEmail';
+	public static final String FIND_BY_EMAIL = "User.findUserByEmail";
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

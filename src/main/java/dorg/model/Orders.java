@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = 'ORDERS')
+@Table(name = "ORDERS")
 //@NamedQuery(name = 'User.findUserByEmail', query = 'select u from User u where u.email = :email')
 
 public class Orders implements Serializable {
@@ -19,12 +19,19 @@ public class Orders implements Serializable {
 	@ManyToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
     @JoinColumn(name="PROD_ID", nullable=false)
 	private Product prod;
+	private String startdate;
 	private String enddate;
+	@Column(name = "moneyset")
 	private boolean moneytrans;
 	private boolean moneyget;
 	private int quantity;
 	private double amount;
+	private int orderno;
 	
+	public void setStartdate(String sd){startdate=sd;}
+	public String getStartdate(){return startdate;}
+	public void setOrderno(int on){orderno=on;}
+	public int getOrderno(){return orderno;}
 	public void setId(int id) {	this.id=id;	}
 	public int getId() { return id;	}
 	public void setProd(Product p) {prod=p;}

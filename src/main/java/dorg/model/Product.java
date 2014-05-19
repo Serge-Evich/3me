@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = 'PRODUCT')
+@Table(name = "PRODUCT")
 //@NamedQuery(name = 'User.findUserByEmail', query = 'select u from User u where u.email = :email')
 
 
@@ -21,6 +21,7 @@ public class Product implements Serializable {
 	private String attrib3;
 	private String attrib4;
 	private String attrib5;
+	private String img;
 	public void setId(int id) {	this.id=id;	}
 	public int getId() { return id;	}
 	public void setName(String n) {name=n;}
@@ -30,6 +31,7 @@ public class Product implements Serializable {
 	public void setAttrib3(String a) {attrib3=a;}
 	public void setAttrib4(String a) {attrib4=a;}
 	public void setAttrib5(String a) {attrib5=a;}
+	public void setImg(String s){img=s;}
 	public String getName(){return name;}
 	public double getPrice(){return price;}
 	public String getAttrib1(){return attrib1;}
@@ -37,5 +39,6 @@ public class Product implements Serializable {
 	public String getAttrib3(){return attrib3;}
 	public String getAttrib4(){return attrib4;}
 	public String getAttrib5(){return attrib5;}
+	public String getImg(){return img;}
 	
 }

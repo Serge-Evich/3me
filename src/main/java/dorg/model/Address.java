@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = 'ADDRESS')
+@Table(name = "ADDRESS")
 //@NamedQuery(name = 'User.findUserByEmail', query = 'select u from User u where u.email = :email')
 
 public class Address implements Serializable {
@@ -13,8 +13,8 @@ public class Address implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
-    @JoinColumn(name="CUST_ID", nullable=false)
+	@OneToOne(cascade= {CascadeType.REFRESH}, fetch=FetchType.LAZY)
+    @MapsId
 	private Customer customer;
 	private String country;
 	private String city;
@@ -30,6 +30,8 @@ public class Address implements Serializable {
 	public void setVillage(String v) {village=v;}
 	public void setStrnumber(int sn){strnumber=sn;}
 	public void setPostcode(int pc){postcode=pc;}
+	public void setStreet(String s){street=s;}
+	public String getStreet(){return street;}
 	public String getCountry(){return country;}
 	public String getCity(){return city;}
 	public String getVillage(){return village;}
